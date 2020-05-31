@@ -57,7 +57,7 @@ export default {
                 initialValue: false,
                 timePicker: {
                     meridian: {
-                        enabled: true
+                        enabled: false
                     },
                     enabled: this.fieldType == 'datetime'
                 },
