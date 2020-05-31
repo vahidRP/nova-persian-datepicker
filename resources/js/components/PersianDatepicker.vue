@@ -54,8 +54,8 @@ export default {
         this.$nextTick(() => {
             this.pDatepicker = $(this.$refs.persianDatepickerInput).pDatepicker({
                 format: this.dateFormat,
-                initialValue: true,
-                initialValueType: 'persian',
+                initialValue: false,
+                // initialValueType: 'persian',
                 timePicker: {
                     meridian: {
                         enabled: false
@@ -70,8 +70,11 @@ export default {
     methods: {
         onDatepickerChange() {
             let selectedUnixDate = this.pDatepicker.model.state.selected.unixDate
+            let gregorianDate = new persianDate(selectedUnixDate)
+            console.log(gregorianDate.toDate());
             window.formatPersian = false;
-            let gregorianDate = new persianDate(selectedUnixDate).toDate()
+            gregorianDate = gregorianDate.toDate()
+            console.log(gregorianDate);
 
             this.$emit('change', gregorianDate)
         },
