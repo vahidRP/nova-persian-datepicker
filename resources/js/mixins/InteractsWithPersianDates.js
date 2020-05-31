@@ -12,10 +12,13 @@ export default {
             if (! value) {
                 return value
             }
-            
+
             let gregorianDate = this.fromAppTimezone(value)
-            
-            return new persianDate(moment(gregorianDate).toDate()).format(format)
+
+            let pDate = new persianDate(moment(gregorianDate).toDate())
+            pDate.formatPersian  = false
+            return pDate.format(format)
+            // return new persianDate(moment(gregorianDate).toDate()).format(format)
         }
     }
 }

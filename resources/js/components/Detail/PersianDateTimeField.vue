@@ -28,6 +28,6 @@ export default {
 
 <style scoped>
 .d-rtl {
-    direction: rtl;
+    direction: ltr !important;
 }
 </style>

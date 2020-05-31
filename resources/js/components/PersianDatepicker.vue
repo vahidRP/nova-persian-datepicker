@@ -56,13 +56,20 @@ export default {
                 format: this.dateFormat,
                 initialValue: false,
                 // initialValueType: 'persian',
+                persianDigit: false,
                 timePicker: {
                     meridian: {
                         enabled: false
                     },
                     enabled: this.fieldType == 'datetime'
                 },
-                onSelect: this.onDatepickerChange
+                onSelect: this.onDatepickerChange,
+                formatter: function formatter(unixDate) {
+                    let self = this,
+                        pDate = this.model.PersianDate.date(unixDate);
+                    pDate.formatPersian  = this.model.options.persianDigit;
+                    return pDate.format(self.format);
+                },
             })
         })
     },
@@ -70,11 +77,7 @@ export default {
     methods: {
         onDatepickerChange() {
             let selectedUnixDate = this.pDatepicker.model.state.selected.unixDate
-            let gregorianDate = new persianDate(selectedUnixDate)
-            console.log(gregorianDate.toDate());
-            window.formatPersian = false;
-            gregorianDate = gregorianDate.toDate()
-            console.log(gregorianDate);
+            let gregorianDate = new persianDate(selectedUnixDate).toDate()
 
             this.$emit('change', gregorianDate)
         },
@@ -95,6 +98,6 @@ export default {
 @import '~persian-datepicker/dist/css/persian-datepicker.css';
 
 .d-rtl {
-    direction: rtl;
+    direction: ltr !important;
 }
 </style>
