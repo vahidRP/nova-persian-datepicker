@@ -9,6 +9,7 @@
             ref="persianDatepickerInput"
             class="w-full form-control form-input form-input-bordered d-rtl text-left"
             autocomplete="off"
+            readonly="readonly"
             @change="onInputChange"
         />
 

@@ -29,8 +29,8 @@ class PersianDateTime extends Field
             if (! $value instanceof DateTimeInterface) {
                 throw new Exception("DateTime field must cast to 'datetime' in Eloquent model.");
             }
-
-            return $value->format('Y-m-d H:i:s');
+        
+            return is_null($value) ? $value : $value->format('Y-m-d H:i:s');
         });
     }
 
@@ -47,12 +47,21 @@ class PersianDateTime extends Field
 
     
     /**
-     * Indicate that the date field is nullable.
+     * Indicate that the field should be nullable.
      *
+     * @param  bool  $nullable
+     * @param  array|Closure  $values
      * @return $this
      */
-    public function nullable()
+    public function nullable($nullable = true, $values = null)
     {
-        return $this->withMeta(['nullable' => true]);
+        $this->nullable = $nullable;
+        $this->withMeta(['nullable' => $nullable]);
+        
+        if ($values !== null) {
+            $this->nullValues($values);
+        }
+        
+        return $this;
     }
 }
