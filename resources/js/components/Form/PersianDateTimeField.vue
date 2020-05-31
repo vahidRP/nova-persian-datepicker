@@ -41,7 +41,7 @@ export default {
             // If the field is in edit mode and has some value, then convert it
             // to persian format and show it on input box.
             if (this.value !== '') {
-                this.localizedValue = this.convertToPersianDate(this.field.value)
+                this.localizedValue = this.convertToPersianDate(this.field.value, this.field.format || 'YYYY-MM-DD hh:mm:ss a')
             }
         },
 

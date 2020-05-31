@@ -17,7 +17,7 @@ export default {
          * Get the localized and converted to persian date for the field.
          */
         localizedDateTime() {
-            return this.convertToPersianDate(this.field.value)
+            return this.convertToPersianDate(this.field.value, this.field.format || 'YYYY-MM-DD hh:mm:ss a')
         }
     }
 };
