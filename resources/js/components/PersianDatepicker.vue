@@ -9,7 +9,6 @@
             ref="persianDatepickerInput"
             class="w-full form-control form-input form-input-bordered d-rtl text-left"
             autocomplete="off"
-            readonly="readonly"
             @change="onInputChange"
         />
 
@@ -55,8 +54,8 @@ export default {
         this.$nextTick(() => {
             this.pDatepicker = $(this.$refs.persianDatepickerInput).pDatepicker({
                 format: this.dateFormat,
-                initialValue: false,
-                // initialValueType: 'persian',
+                initialValue: true,
+                initialValueType: 'persian',
                 persianDigit: false,
                 timePicker: {
                     meridian: {
