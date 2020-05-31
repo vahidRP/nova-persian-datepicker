@@ -54,7 +54,8 @@ export default {
         this.$nextTick(() => {
             this.pDatepicker = $(this.$refs.persianDatepickerInput).pDatepicker({
                 format: this.dateFormat,
-                initialValue: false,
+                initialValue: true,
+                initialValueType: 'persian',
                 timePicker: {
                     meridian: {
                         enabled: false
