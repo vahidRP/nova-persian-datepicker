@@ -4,7 +4,6 @@
             type="text"
             :name="field.name"
             :value="value"
-            :data-date="value"
             :disabled="disabled"
             :placeholder="placeholder"
             ref="persianDatepickerInput"
@@ -57,7 +56,6 @@ export default {
                 format: this.dateFormat,
                 initialValue: true,
                 initialValueType: 'persian',
-                persianDigit: false,
                 timePicker: {
                     meridian: {
                         enabled: false
@@ -72,6 +70,7 @@ export default {
     methods: {
         onDatepickerChange() {
             let selectedUnixDate = this.pDatepicker.model.state.selected.unixDate
+            window.formatPersian = false;
             let gregorianDate = new persianDate(selectedUnixDate).toDate()
 
             this.$emit('change', gregorianDate)
