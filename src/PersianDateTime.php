@@ -25,7 +25,7 @@ class PersianDateTime extends Field
      */
     public function __construct($name, $attribute = null, $resolveCallback = null)
     {
-        $this->withMeta(['format' => ($this->meta()['format'] ?? 'YYYY-MM-DD HH:mm:ss')]);
+        $this->meta['format'] = $this->meta['format'] ?? 'YYYY-MM-DD HH:mm:ss';
         parent::__construct($name, $attribute, $resolveCallback ?? function ($value) {
             if (! $value instanceof DateTimeInterface) {
                 throw new Exception("DateTime field must cast to 'datetime' in Eloquent model.");
