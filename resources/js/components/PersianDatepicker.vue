@@ -4,6 +4,7 @@
             type="text"
             :name="field.name"
             :value="value"
+            :data-date="value"
             :disabled="disabled"
             :placeholder="placeholder"
             ref="persianDatepickerInput"
@@ -56,6 +57,7 @@ export default {
                 format: this.dateFormat,
                 initialValue: true,
                 initialValueType: 'persian',
+                persianDigit: false,
                 timePicker: {
                     meridian: {
                         enabled: false
