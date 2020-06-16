@@ -26,11 +26,11 @@ class PersianDate extends Field
     public function __construct($name, $attribute = null, $resolveCallback = null)
     {
         parent::__construct($name, $attribute, $resolveCallback ?? function ($value) {
-            if (! $value instanceof DateTimeInterface) {
+            if (!is_null($value) && ! $value instanceof DateTimeInterface) {
                 throw new Exception("Date field must cast to 'date' in Eloquent model.");
             }
 
-            return $value->format('Y-m-d');
+            return is_null($value) ? $value : $value->format('Y-m-d');
         });
     }
 
