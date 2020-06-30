@@ -63,6 +63,7 @@ export default {
                     },
                     enabled: this.fieldType == 'datetime'
                 },
+                onShow: this.onDatepickerModalShow,
                 onSelect: this.onDatepickerChange,
                 formatter: function formatter(unixDate) {
                     let self = this,
@@ -81,7 +82,9 @@ export default {
 
             this.$emit('change', gregorianDate)
         },
-
+        onDatepickerModalShow(datepickerObject) {
+            datepickerObject.view.$container.addClass('flatpickr-weekday');
+        },
         onInputChange() {
             /**
              * If date input is blank, trigger event to make sure everyone nulls their values.
